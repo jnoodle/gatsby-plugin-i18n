@@ -9,12 +9,13 @@ const getMarkdownPage = (options, postPage) => edge => {
   const path = edge.node.fields.slug;
   const slug = edge.node.fields.slug;
   const langKey = edge.node.fields.langKey;
+  const customPath = edge.node.fields.customPath || slug;
 
   return {
-    path, // required
+    path: customPath, // required
     component: postPage,
     context: {
-      path, // For backward compatibility only...
+      path: customPath, // For backward compatibility only...
       slug,
       langKey
     },
